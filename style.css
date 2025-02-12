@@ -112,3 +112,10 @@ margin-bottom: 20px;
 .weather{
     display: none;
 }
+
+.error{
+    display: none;
+    text-align: left;
+    padding: 10px;
+    color: red;
+}

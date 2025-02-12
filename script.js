@@ -5,13 +5,22 @@ console.log("serachBox",searchBox)
 const serachButton=document.querySelector(".searchBtn")
 async function checkWeather(city){
     const response =await fetch(apiUrl + city+`&appid=${apiKey}`);
+    console.log("data",response)
+    if(!response.ok){
+        document.querySelector(".error").style.display="block";
+        document.querySelector(".weather").style.display="noneg";
+
+        return;
+    }
     var data=await response.json();
-    console.log("data",data)
+
+   
     document.querySelector(".city").innerHTML=data.name;
     document.querySelector(".temp").innerHTML=Math.round(data.main.temp) +"°C";
     document.querySelector(".humidity").innerHTML=data.main.humidity +"%";
     document.querySelector(".wind").innerHTML=data.wind.speed +"km/hr";
     document.querySelector(".weather").style.display="block";
+    document.querySelector(".error").style.display="none";
     //add the code for changing the icon
 
 }
